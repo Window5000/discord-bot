@@ -24,15 +24,16 @@ client.once('ready', () => {
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
 
-	const { commandName } = interaction;
+	const command = client.commands.get(interaction.commandName);
 
-	/*if (commandName === 'ping') {
-		await interaction.reply('Pong!');
-	} if (commandName === 'server') {
-		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}\nCreated at: ${interaction.guild.createdAt}`);
-	} else if (commandName === 'user') {
-		await interaction.reply(`Your username: ${interaction.user.tag}`);
-	}*/
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
 });
 
 // Login to Discord with your client's token
