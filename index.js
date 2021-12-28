@@ -26,13 +26,13 @@ client.on('interactionCreate', async interaction => {
 
 	const { commandName } = interaction;
 
-	if (commandName === 'ping') {
+	/*if (commandName === 'ping') {
 		await interaction.reply('Pong!');
 	} if (commandName === 'server') {
 		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}\nCreated at: ${interaction.guild.createdAt}`);
 	} else if (commandName === 'user') {
 		await interaction.reply(`Your username: ${interaction.user.tag}`);
-	}
+	}*/
 });
 
 // Login to Discord with your client's token
