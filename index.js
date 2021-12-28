@@ -1,14 +1,13 @@
-const Discord = require("discord.js")
-const client = new Discord.Client()
+const { Client, Intents } = require('discord.js');
+const { token } = require('./config.json');
 
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`)
-})
+// Create a new client instance
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-client.on("message", msg => {
-  if (msg.content === "ping") {
-    msg.reply("pong");
-  }
-})
+// When the client is ready, run this code (only once)
+client.once('ready', () => {
+	console.log('Ready!');
+});
 
-client.login('OTI1MzUwMjg4MDcwNzAxMTE4.Ycr1nA.yTjMQoLkOyCSLgBM297_08_aNsA')
+// Login to Discord with your client's token
+client.login(token);
