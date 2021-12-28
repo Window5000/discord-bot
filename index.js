@@ -1,2 +1,2 @@
 const Discord = require("discord.js");
-print("hello world")
+console.log("hello world")
